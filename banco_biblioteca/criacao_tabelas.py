@@ -4,18 +4,22 @@ def criar_tabelas():
     conexao = sqlite3.connect('banco_biblioteca.db')
     cursor = conexao.cursor()
 
-
     # Tabela Pessoa
-
-
+    cursor.execute('CREATE TABLE IF NOT EXISTS Pessoa '
+                   '(nome TEXT NOT NULL,'
+                   ' telefone INTEGER NOT NULL'
+                   ', nacionalidade TEXT NOT NULL)')
 
     # Tabela Usuario
-
-
+    cursor.execute('CREATE TABLE IF NOT EXISTS Usuario '
+                   '(nome TEXT NOT NULL,'
+                   ' telefone INTEGER NOT NULL,'
+                   ' nacionalidade TEXT NOT NULL)')
 
     # Tabela Autor
-
-
+    cursor.execute('CREATE TABLE IF NOT EXISTS Autor '
+                   '(nome TEXT NOT NULL,'
+                   ' nacionalidade TEXT NOT NULL)')
 
     # Tabela Livro
     cursor.execute('''
@@ -27,7 +31,6 @@ def criar_tabelas():
         );
     ''')
 
-
     # Tabela Genero
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Genero (
@@ -35,7 +38,6 @@ def criar_tabelas():
             genero VARCHAR(100) NOT NULL
         );
     ''')
-
 
     # Tabela Livro_Genero
     cursor.execute('''
@@ -48,7 +50,6 @@ def criar_tabelas():
         );
     ''')
 
-
     # Tabela Autor_Livro
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Autor_Livro (
@@ -60,15 +61,18 @@ def criar_tabelas():
         );
     ''')
 
-
-
     # Tabela ItemBiblioteca
-
-
+    cursor.execute('CREATE TABLE IF NOT EXISTS item_biblioteca '
+                   '(id INTEGER PRIMARY KEY,'
+                   ' titulo TEXT NOT NULL,'
+                   ' disponivel INTEGER NOT NULL)')
 
     # Tabela Exemplar
-
-
+    cursor.execute('CREATE TABLE IF NOT EXISTS Exemplar '
+                   '(id INTEGER PRIMARY KEY,'
+                   ' titulo TEXT NOT NULL,'
+                   ' estado TEXT NOT NULL,'
+                   ' max_renovacoes INTEGER NOT NULL)')
 
     # Tabela Empréstimo
     cursor.execute('''
