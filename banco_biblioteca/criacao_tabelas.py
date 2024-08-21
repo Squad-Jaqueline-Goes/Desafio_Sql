@@ -1,25 +1,30 @@
 import sqlite3
 
 def criar_tabelas():
-    conexao = sqlite3.connect('banco_biblioteca.db')
+    conexao = sqlite3.connect('banco_biblioteca/banco_biblioteca')
     cursor = conexao.cursor()
 
     # Tabela Pessoa
     cursor.execute('CREATE TABLE IF NOT EXISTS Pessoa '
-                   '(nome TEXT NOT NULL,'
+                   '(id_pessoa INTEGER PRIMARY KEY AUTOINCREMENT,'
+                   'nome TEXT NOT NULL,'
                    ' telefone INTEGER NOT NULL'
                    ', nacionalidade TEXT NOT NULL)')
 
     # Tabela Usuario
-    cursor.execute('CREATE TABLE IF NOT EXISTS Usuario '
-                   '(nome TEXT NOT NULL,'
+    cursor.execute('CREATE TABLE IF NOT EXISTS Usuario'
+                   '(id_usuario INTEGER PRIMARY KEY,'
+                   ' nome TEXT NOT NULL,'
                    ' telefone INTEGER NOT NULL,'
-                   ' nacionalidade TEXT NOT NULL)')
+                   ' nacionalidade TEXT NOT NULL,'
+                   ' FOREIGN KEY (id_usuario) REFERENCES Pessoa(id_pessoa) )')
 
     # Tabela Autor
     cursor.execute('CREATE TABLE IF NOT EXISTS Autor '
-                   '(nome TEXT NOT NULL,'
-                   ' nacionalidade TEXT NOT NULL)')
+                   '(id_autor INTEGER PRIMARY KEY,'
+                   ' nome TEXT NOT NULL,'
+                   ' nacionalidade TEXT NOT NULL,'
+                   ' FOREIGN KEY (id_autor) REFERENCES Pessoa(id_pessoa) )')
 
     # Tabela Livro
     cursor.execute('''
@@ -62,7 +67,7 @@ def criar_tabelas():
     ''')
 
     # Tabela ItemBiblioteca
-    cursor.execute('CREATE TABLE IF NOT EXISTS item_biblioteca '
+    cursor.execute('CREATE TABLE IF NOT EXISTS ItemBiblioteca '
                    '(id INTEGER PRIMARY KEY,'
                    ' titulo TEXT NOT NULL,'
                    ' disponivel INTEGER NOT NULL)')
@@ -72,7 +77,10 @@ def criar_tabelas():
                    '(id INTEGER PRIMARY KEY,'
                    ' titulo TEXT NOT NULL,'
                    ' estado TEXT NOT NULL,'
-                   ' max_renovacoes INTEGER NOT NULL)')
+                   ' max_renovacoes INTEGER NOT NULL,'
+                   ' id_livro INTEGER NOT NULL,'
+                   ' FOREIGN KEY (id) REFERENCES ItemBiblioteca(id),'
+                   ' FOREIGN KEY (id_livro) REFERENCES Livro(id_livro))')
 
     # Tabela Empréstimo
     cursor.execute('''
@@ -83,7 +91,7 @@ def criar_tabelas():
             id_usuario INTEGER NOT NULL,
             id_exemplar INTEGER NOT NULL,
             FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
-            FOREIGN KEY (id_exemplar) REFERENCES Exemplar(id_exemplar)
+            FOREIGN KEY (id_exemplar) REFERENCES Exemplar(id)
         );
     ''')
 
