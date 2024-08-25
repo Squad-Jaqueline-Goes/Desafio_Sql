@@ -13,7 +13,7 @@ def criar_tabelas():
 
     # Tabela Usuario
     cursor.execute('CREATE TABLE IF NOT EXISTS Usuario'
-                   '(id_usuario INTEGER PRIMARY KEY,'
+                   '(id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,'
                    ' nome TEXT NOT NULL,'
                    ' telefone INTEGER NOT NULL,'
                    ' nacionalidade TEXT NOT NULL,'
@@ -21,7 +21,7 @@ def criar_tabelas():
 
     # Tabela Autor
     cursor.execute('CREATE TABLE IF NOT EXISTS Autor '
-                   '(id_autor INTEGER PRIMARY KEY,'
+                   '(id_autor INTEGER PRIMARY KEY AUTOINCREMENT,'
                    ' nome TEXT NOT NULL,'
                    ' nacionalidade TEXT NOT NULL,'
                    ' FOREIGN KEY (id_autor) REFERENCES Pessoa(id_pessoa) )')
@@ -53,7 +53,7 @@ def criar_tabelas():
             FOREIGN KEY (id_livro) REFERENCES Livro(id_livro),
             FOREIGN KEY (id_genero) REFERENCES Genero(id_genero)
         );
-    ''')
+    ''') #corrigir a chave primaria, pois só pode haver uma
 
     # Tabela Autor_Livro
     cursor.execute('''
@@ -64,17 +64,17 @@ def criar_tabelas():
             FOREIGN KEY (id_livro) REFERENCES Livro(id_livro),
             FOREIGN KEY (id_autor) REFERENCES Autor(id_autor)
         );
-    ''')
+    ''') #corrigir a chave primaria, pois só pode haver uma
 
     # Tabela ItemBiblioteca
     cursor.execute('CREATE TABLE IF NOT EXISTS ItemBiblioteca '
-                   '(id INTEGER PRIMARY KEY,'
+                   '(id INTEGER PRIMARY KEY AUTOINCREMENT,'
                    ' titulo TEXT NOT NULL,'
                    ' disponivel INTEGER NOT NULL)')
 
     # Tabela Exemplar
     cursor.execute('CREATE TABLE IF NOT EXISTS Exemplar '
-                   '(id INTEGER PRIMARY KEY,'
+                   '(id_exemplar INTEGER PRIMARY KEY AUTOINCREMENT,'
                    ' titulo TEXT NOT NULL,'
                    ' estado TEXT NOT NULL,'
                    ' max_renovacoes INTEGER NOT NULL,'
@@ -91,7 +91,7 @@ def criar_tabelas():
             id_usuario INTEGER NOT NULL,
             id_exemplar INTEGER NOT NULL,
             FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
-            FOREIGN KEY (id_exemplar) REFERENCES Exemplar(id)
+            FOREIGN KEY (id_exemplar) REFERENCES Exemplar(id_exemplar)
         );
     ''')
 

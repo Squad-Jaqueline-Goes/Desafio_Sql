@@ -1,0 +1,49 @@
+{
+	"folders": {},
+	"connections": {
+		"sqlite_jdbc-19180e5a1be-52aeb78152277976": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "banco_biblioteca",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\alice\\OneDrive\\Área de Trabalho\\WoMakers Code\\Desafio_Sql\\banco_biblioteca\\banco_biblioteca",
+				"url": "jdbc:sqlite:C:\\Users\\alice\\OneDrive\\Área de Trabalho\\WoMakers Code\\Desafio_Sql\\banco_biblioteca\\banco_biblioteca",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		},
+		"sqlite_jdbc-19180e5e5bf-3dafe02a55c1611a": {
+			"provider": "sqlite",
+			"driver": "sqlite_jdbc",
+			"name": "banco",
+			"save-password": true,
+			"configuration": {
+				"database": "C:\\Users\\alice\\OneDrive\\Área de Trabalho\\WoMakers Code\\Banco de Dados\\banco",
+				"url": "jdbc:sqlite:C:\\Users\\alice\\OneDrive\\Área de Trabalho\\WoMakers Code\\Banco de Dados\\banco",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Desenvolvimento",
+			"color": "255,255,255",
+			"description": "Banco de dados de desenvolvimento",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
