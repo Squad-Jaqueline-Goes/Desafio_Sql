@@ -1,0 +1,27 @@
+# Ignorar diretórios e arquivos de cache do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignorar arquivos e diretórios específicos do IDE
+.vscode/
+.idea/
+
+# Ignorar arquivos de configuração do ambiente virtual
+venv/
+.env/
+.env.bak/
+
+# Ignorar arquivos de banco de dados temporários
+*.sqlite3
+*.db
+*.db-journal
+
+# Ignorar arquivos de logs
+*.log
+
+# Ignorar outros arquivos temporários comuns
+*.tmp
+*.swp
+*.swo
