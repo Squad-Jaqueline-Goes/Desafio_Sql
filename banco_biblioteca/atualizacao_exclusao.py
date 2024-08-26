@@ -16,3 +16,9 @@ def remover_autor(conn, autor_id):
     query = "DELETE FROM Autores WHERE id = ?"
     conn.execute(query, (autor_id,))
     conn.commit()
+
+#Remover um livro do banco de dados
+def remover_livro(conn, livro_id):
+    query = "DELETE FROM Livros WHERE id = ?"
+    conn.execute(query, (livro_id))
+    conn.commit()
